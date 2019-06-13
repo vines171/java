@@ -29,7 +29,7 @@ public class MainPageMailTest<driver> {
     public void validRegisterTest() {
         SignUpVerifyMail signUpVerifyMail = mainPageMail
                 .register("irina",
-                        "",
+                        "vishnevskaya",
                         "2",
                         3,
                         "Месяц",
