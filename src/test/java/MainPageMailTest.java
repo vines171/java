@@ -88,16 +88,23 @@ public class MainPageMailTest<driver> {
 
     @Test
     public void signUpSpecialCharactersEmailTest() {
-        MainPageMail mp = mainPageMail.typePassword("№№№#######*****");
+        MainPageMail mp = mainPageMail.typeEmail("№№№#######*****");
         String error = mp.errorEmailGetText();
         Assert.assertEquals("Некорректное имя почтового ящика. Допустимо использовать только латинские буквы, цифры,\n" +
                 "знак подчеркивания («_»), точку («.»), минус («-»)", error);
     }
+
     @Test
     public void signUpReservedEmailTest() {
-        MainPageMail mp = mainPageMail.typePassword("vines");
+        MainPageMail mp = mainPageMail.typeEmail("vines");
         String error = mp.errorEmailGetText();
         Assert.assertEquals("Ящик с таким именем уже существует", error);
+    }
+    @Test
+    public void signUpLongEmailTest() {
+        MainPageMail mp = mainPageMail.typeEmail("cnjkjdfzcnjkjdfzcnjkjdfzcnjkjdfzcnjkjdfz");
+        String typeEmail = mp.typeEmailGetText();
+        Assert.assertEquals("cnjkjdfzcnjkjdfzcnjkjdfzcnjkjdf", typeEmail);
     }
     @After
     public void tearDown(){

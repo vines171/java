@@ -87,6 +87,9 @@ public class MainPageMail extends SignUpVerifyMail {
     public String errorEmailGetText () {
         return driver.findElement(errorEmail).getText();
     }
+    public String typeEmailGetText () {
+        return driver.findElement(typeEmail).getText();
+    }
     public String errorPassworGetText () {
         return driver.findElement(errorPassword).getText();
     }
