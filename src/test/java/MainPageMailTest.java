@@ -61,6 +61,12 @@ public class MainPageMailTest<driver> {
         String error = mp.errorPassworGetText();
         Assert.assertEquals("Используйте не менее 8 символов", error);
     }
+    @Test
+    public void signUpReservedEmailTest() {
+        MainPageMail mp = mainPageMail.typePassword("vines");
+        String error = mp.errorEmailGetText();
+        Assert.assertEquals("Ящик с таким именем уже существует", error);
+    }
     @After
     public void tearDown(){
         driver.quit();
