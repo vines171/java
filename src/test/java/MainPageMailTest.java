@@ -55,6 +55,12 @@ public class MainPageMailTest<driver> {
         String heading = termsOfUseMail.getHeadingTermsOfUseText();
         Assert.assertEquals("Пользовательское Соглашение", heading);
     }
+    @Test
+    public void signUpWithShortPassTest() {
+        MainPageMail mp = mainPageMail.typePassword("asd");
+        String error = mp.errorPassworGetText();
+        Assert.assertEquals("Используйте не менее 8 символов", error);
+    }
     @After
     public void tearDown(){
         driver.quit();
