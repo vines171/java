@@ -68,6 +68,12 @@ public class MainPageMailTest<driver> {
         Assert.assertEquals("Используйте менее 40 символов", error);
     }
     @Test
+    public void signUpWithPasswordSpecialCharactersTest() {
+        MainPageMail mp = mainPageMail.typePassword("№№№#######*****");
+        String error = mp.errorPassworGetText();
+        Assert.assertEquals("Используйте только буквы (a–z, A–Z), цифры и символы ! @ # $ % ^ & * ( ) - _ + = ; : , . / ? \\ | ` ~ { }", error);
+    }
+    @Test
     public void signUpWithPasswordFromNumbersTest() {
         MainPageMail mp = mainPageMail.typePassword("12345678");
         String error = mp.errorPassworGetText();
