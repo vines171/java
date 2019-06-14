@@ -62,6 +62,19 @@ public class MainPageMailTest<driver> {
         Assert.assertEquals("Используйте не менее 8 символов", error);
     }
     @Test
+    public void signUpWithLongPassTest() {
+        MainPageMail mp = mainPageMail.typePassword("asd");
+        String error = mp.errorPassworGetText();
+        Assert.assertEquals("Используйте менее 40 символов", error);
+    }
+    @Test
+    public void signUpWithPasswordFromNumbersTest() {
+        MainPageMail mp = mainPageMail.typePassword("12345678");
+        String error = mp.errorPassworGetText();
+        Assert.assertEquals("Используйте буквы (a-z, A-Z) и цифры", error);
+    }
+
+    @Test
     public void signUpReservedEmailTest() {
         MainPageMail mp = mainPageMail.typePassword("vines");
         String error = mp.errorEmailGetText();
