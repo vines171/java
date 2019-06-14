@@ -63,7 +63,7 @@ public class MainPageMailTest<driver> {
     }
     @Test
     public void signUpWithLongPassTest() {
-        MainPageMail mp = mainPageMail.typePassword("asd");
+        MainPageMail mp = mainPageMail.typePassword("12345678910111213141516171819202122232425262728293031323334353637383940414243444546");
         String error = mp.errorPassworGetText();
         Assert.assertEquals("Используйте менее 40 символов", error);
     }
@@ -72,6 +72,12 @@ public class MainPageMailTest<driver> {
         MainPageMail mp = mainPageMail.typePassword("12345678");
         String error = mp.errorPassworGetText();
         Assert.assertEquals("Используйте буквы (a-z, A-Z) и цифры", error);
+    }
+    @Test
+    public void signUpWithAPasswordsOfLetterTest() {
+        MainPageMail mp = mainPageMail.typePassword("cnjkjdfz");
+        String error = mp.errorPassworGetText();
+        Assert.assertEquals("Не используйте личные данные, последовательности (123456, qwerty) и популярные пароли (password).", error);
     }
 
     @Test
