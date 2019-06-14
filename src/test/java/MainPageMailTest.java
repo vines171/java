@@ -87,6 +87,13 @@ public class MainPageMailTest<driver> {
     }
 
     @Test
+    public void signUpSpecialCharactersEmailTest() {
+        MainPageMail mp = mainPageMail.typePassword("№№№#######*****");
+        String error = mp.errorEmailGetText();
+        Assert.assertEquals("Некорректное имя почтового ящика. Допустимо использовать только латинские буквы, цифры,\n" +
+                "знак подчеркивания («_»), точку («.»), минус («-»)", error);
+    }
+    @Test
     public void signUpReservedEmailTest() {
         MainPageMail mp = mainPageMail.typePassword("vines");
         String error = mp.errorEmailGetText();
