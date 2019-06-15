@@ -25,7 +25,6 @@ public class MainPageMailTest<driver> {
     }
 
     @Test
-    //@Ignore
     public void validRegisterTest() {
         SignUpVerifyMail signUpVerifyMail = mainPageMail
                 .register("irina",
@@ -49,7 +48,6 @@ public class MainPageMailTest<driver> {
     }
 
     @Test
-    @Ignore
     public void clickTermsOfUseTest() {
         TermsOfUseMail termsOfUseMail = mainPageMail.clickTermsOfUse();
         String heading = termsOfUseMail.getHeadingTermsOfUseText();
